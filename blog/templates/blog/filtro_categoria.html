@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<h2>Filtrar por Categoría</h2>
+
+<form method="get" action="{% url 'filtro_categoria' %}">
+    <label for="categoria">Filtrar por categoría:</label>
+    <select name="categoria" id="categoria">
+        <option value="">--Seleccionar Categoría--</option>
+        {% for categoria in categorias %}
+        <option value="{{ categoria.id }}" {% if categoria.id is categoria_id %} selected {% endif %}>
+            {{ categoria.nombre }}
+        </option>
+        {% endfor %}
+
+
+    </select>
+    <button type="submit">Filtrar</button>
+</form>
+
+
+
+<h3>Posts por categoría:</h3>
+{% for post in posts %}
+<div>
+    <h4>{{ post.titulo }}</h4>
+    <p>{{ post.contenido|truncatewords:20 }}</p>
+    <a href="{% url 'ver_post' post.id %}">Leer más</a>
+</div>
+{% empty %}
+<p>No hay posts en esta categoría.</p>
+{% endfor %}
+
+{% endblock %}

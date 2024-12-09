@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h2>Agregar Comentario a: {{ post.titulo }}</h2>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Agregar Comentario</button>
+</form>
+
+<a href="{% url 'ver_post' post.id %}">Volver al post</a>
+{% endblock %}

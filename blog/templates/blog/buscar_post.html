@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h2>Buscar Post</h2>
+
+<form method="GET">
+    <input type="text" name="q" value="{{ query }}" placeholder="Buscar por título o contenido..." />
+    <button type="submit">Buscar</button>
+</form>
+
+{% if error_message %}
+<p style="color: red;">{{ error_message }}</p>
+{% endif %}
+
+{% if posts %}
+<h3>Resultados de la búsqueda:</h3>
+{% for post in posts %}
+<div>
+    <h4>{{ post.titulo }}</h4>
+    <p>{{ post.contenido|truncatewords:20 }}</p>
+    <a href="{% url 'ver_post' post.id %}">Leer más</a>
+</div>
+{% endfor %}
+{% else %}
+{% if query %}
+<p>No se encontraron resultados para "{{ query }}".</p>
+{% endif %}
+{% endif %}
+
+{% endblock %}

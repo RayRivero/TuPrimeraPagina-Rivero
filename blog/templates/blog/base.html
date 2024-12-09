@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El cliente NO siempre tiene la razón</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #003366;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        h1 a:hover {
+            text-decoration: underline;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #003366;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <a href="{% url 'inicio' %}">El cliente NO siempre tiene la razón</a>
+        </h1>
+        <nav>
+            <a href="{% url 'agregar_post' %}">Agregar Post</a>
+            <a href="{% url 'buscar_post' %}">Buscar Post</a>
+            <a href="{% url 'agregar_categoria' %}">Agregar Categoría</a>
+            <a href="{% url 'filtro_categoria' %}">Filtrar por Categoría</a>
+
+        </nav>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+        <p>© 2024 El cliente NO siempre tiene la razón - Todos los derechos reservados.</p>
+    </footer>
+</body>
+
+</html>
